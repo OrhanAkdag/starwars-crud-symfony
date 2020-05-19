@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Resident;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +14,18 @@ class ResidentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
+            ->add('firstname', TextType::class, [
+                'label' => 'prénom du résident',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'prénom du résident',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('vehicules')
             ->add('save', SubmitType::class)   
 

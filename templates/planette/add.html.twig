@@ -1,40 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_connected.html.twig' %}
 
 {% block title %}Ajout de planete!{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
-    <div class="example-wrapper">
-        <h1>Ici plus tard je saurais faire un formulaire ! ✅</h1>
-        {% form_theme form 'bootstrap_4_layout.html.twig' %}
-        {{ form_start(form) }}
-
-        {{ form_row(form.nom) }} <br>
-
-
-        {{ form_row(form.terrain) }}<br>
-
-        {{ form_row(form.nbKmTerre) }}<br>
-
-        {{ form_row(form.allegiance) }}<br>
-
-        {{ form_row(form.description) }}<br>
-
-
-        {{ form_row(form.deteDecouverte) }}<br>
-
-
-        {{ form_label(form.save) }}
-        {{ form_widget(form.save) }}
-
-        {{ form_end(form) }}
-
-        <a href="{{ path('planette') }}">Enfait je veut revoir la liste de mes planètes</a>
-
+    <div class="bg-light vh-100 my-2">
+        <div class="container">
+            <div class="my-2 shadow p-4">
+                {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                {{ form_start(form) }}
+                {{ form_row(form.nom) }}
+                {{ form_row(form.terrain) }}
+                {{ form_row(form.nbKmTerre) }}
+                {{ form_row(form.allegiance) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.deteDecouverte) }}
+                {{ form_label(form.save) }}
+                {{ form_widget(form.save) }}
+                {{ form_end(form) }}
+            </div>
+            <div>
+                <a href="{{ path('planette') }}">Revenir à mes planètes</a>
+            </div>
+        </div>
         <ul>
             {% if form.vars.errors.form.getErrors(true)|length > 0 %}
             {% for error in form.vars.errors.form.getErrors(true) %}

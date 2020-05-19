@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_connected.html.twig' %}
 
 {% block title %}Hello VehiculeController!{% endblock %}
 
@@ -8,48 +8,76 @@
 {% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
-
-
-    <div class="example-wrapper">
-
-            <img src="{{ asset('images/' ~ planette.nom ~ '.jpeg' ) }}">
-
-
-
-        <h1>Bienvenue sur la planète {{ planette.nom }} ✅</h1>
-        <h2>Terrain {{ planette.terrain }}</h2>
-        <h2>nbKmTerre {{ planette.nbKmTerre }}</h2>
-        <h2>allegiance {{ planette.allegiance }}</h2>
-        <h2>description {{ planette.description }}</h2>
-        <h2>Date de découverte : {{ planette.deteDecouverte|date('d/m/Y') }}</h2>
-
-        <h2>Les habitants de ma planète : </h2>
-
-        {% for habitant in planette.rensidents %}
-            <h2>{{ habitant.firstname }} - {{ habitant.lastname }}</h2>
-
-            <h3>Les véhicules de {{ habitant.firstname }} : </h3>
-            {% if habitant.vehicules|length == 0 %}
-            Amandine marche à pied
-            {% endif %}
-            <ol>
-                {% for vehicule in habitant.vehicules %}
-                    <li>{{ vehicule.nom }} - {{ vehicule.model }}</li>
+    <div class="bg-light vh-100">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="{{ asset('images/' ~ planette.nom ~ '.jpeg' ) }}" class="w-100">
+                    </div>
+                    <div class="col-8">
+                        <h1 class="display-4">{{ planette.nom|capitalize }}</h1>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                Terrain: {{ planette.terrain }}
+                            </li>
+                            <li class="list-group-item">
+                                nbKmTerre: {{ planette.nbKmTerre }}
+                            </li>
+                            <li class="list-group-item">
+                                allegiance: {{ planette.allegiance }}
+                            </li>
+                            <li class="list-group-item">
+                                description: {{ planette.description }}
+                            </li>
+                            <li class="list-group-item">
+                                Date de découverte : {{ planette.deteDecouverte|date('d/m/Y') }}
+                            </li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2 class="text-center bg-primary text-white p-2">Les habitants de ma planète : </h2>
+            <table class="table bg-white shadow">
+                <thead>
+                  <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Véhicule</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for habitant in planette.rensidents %}
+                  <tr>
+                    <td>{{ habitant.lastname }}</td>
+                    <td>{{ habitant.firstname }}</td>
+                    <td>
+                        {% if habitant.vehicules|length == 0 %}
+                        {{ habitant.firstname}} marche à pied
+                        {% endif %}
+                        <ol>
+                            {% for vehicule in habitant.vehicules %}
+                                <li>{{ vehicule.nom }} - {{ vehicule.model }}</li>
+                            {% endfor %}
+                        </ol>
+                    </td>
+                  </tr>
+                  {% for vehicule in habitant.vehicules %}
+                            <li>{{ vehicule.nom }} - {{ vehicule.model }}</li>
+                        {% endfor %}
                 {% endfor %}
-            </ol>
-        {% endfor %}
-
-
-        <a href="{{ path('planette') }}">Voyager sur une autre planette</a>
+                </tbody>
+              </table>
+              <div>
+                <a href="{{ path('planette') }}" class=" nav-item btn btn-primary mx-2text-white">Voyager sur une autre planète</a>
+              </div>
+        </div>
     </div>
 {% endblock %}
 
-       {% block javascripts %}
-           {{ parent() }}
-           <script src="{{ asset('javascripts/detail.js') }}"></script>
-       {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('javascripts/detail.js') }}"></script>
+{% endblock %}

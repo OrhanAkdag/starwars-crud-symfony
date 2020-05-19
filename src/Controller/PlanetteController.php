@@ -12,7 +12,7 @@ class PlanetteController extends AbstractController
 {
     // Equivalent du get all
     /**
-     * @Route("/", name="planette")
+     * @Route("/{_locale}", name="planette")
      */
     public function index()
     {
@@ -28,7 +28,7 @@ class PlanetteController extends AbstractController
 
     // Ajout d'une planète
     /**
-     * @Route("/add", name="add_planette")
+     * @Route("/{_locale}/add", name="add_planette")
      */
     public function addPlanette(Request $request)
     {
@@ -53,7 +53,7 @@ class PlanetteController extends AbstractController
 
     // Equivalent get one
     /**
-     * @Route("/detail/{planette}", name="detail_planette")
+     * @Route("/{_locale}/detail/{planette}", name="detail_planette")
      */
     public function detailPlanet(Planete $planette)
     {
@@ -64,7 +64,7 @@ class PlanetteController extends AbstractController
 
     // Equivalent du update
     /**
-     * @Route("/update/{planette}", name="update_planet")
+     * @Route("/{_locale}/update/{planette}", name="update_planet")
      */
     public function updatePlanet(Planete $planette, Request $request)
     {
@@ -100,7 +100,7 @@ class PlanetteController extends AbstractController
 
     // Equivalent du delete
     /**
-     * @Route("/delete/{planette}", name="delete_planet")
+     * @Route("/{_locale}/delete/{planette}", name="delete_planet")
      */
     public function deletePlanet(Planete $planette)
     {
@@ -112,7 +112,7 @@ class PlanetteController extends AbstractController
 
     // Equivalent du get all
     /**
-     * @Route("/planette-distance/{distance}", name="planette_distance")
+     * @Route("/{_locale}/planette-distance/{distance}", name="planette_distance")
      */
     public function getPlanetDistance($distance)
     {
@@ -127,7 +127,7 @@ class PlanetteController extends AbstractController
     }
 
     /**
-     * @Route("/search-string/{string}", name="planette_search_string")
+     * @Route("/{_locale}/search-string/{string}", name="planette_search_string")
      */
     public function searchByString($string){
         $plannettes = $this->getDoctrine()->getRepository(Planete::class)->findSearchSting($string);

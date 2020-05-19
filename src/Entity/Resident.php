@@ -6,7 +6,8 @@ use App\Repository\ResidentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as AppConstraint;
 /**
  * @ORM\Entity(repositoryClass=ResidentRepository::class)
  */
@@ -21,11 +22,15 @@ class Resident
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez entrez le pénom du résident")
+     * @AppConstraint\OnlyLetter(message="Les chiffres ne sont pas autorisés")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez entrez le nom du résident")
+     * @AppConstraint\OnlyLetter(message="Les chiffres ne sont pas autorisés")
      */
     private $lastname;
 

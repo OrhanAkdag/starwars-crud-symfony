@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="0jyq3iq" resname="hello_page">
+        <source>hello_page</source>
+        <target>Welcome to planet page</target>
+      </trans-unit>
+      <trans-unit id="kZso50I" resname="miles_from_earth">
+        <source>miles_from_earth</source>
+        <target>miles from earth</target>
+      </trans-unit>
+      <trans-unit id="Xnhrhkd" resname="planet_list">
+        <source>planet_list</source>
+        <target>List of planets</target>
+      </trans-unit>
+      <trans-unit id="gqNTf.D" resname="name">
+        <source>name</source>
+        <target>_name</target>
+      </trans-unit>
+      <trans-unit id="hAiIBeF" resname="terrain">
+        <source>terrain</source>
+        <target>_terrain</target>
+      </trans-unit>
+      <trans-unit id="OIHC5.N" resname="ng_km_terre">
+        <source>ng_km_terre</source>
+        <target>miles from earth</target>
+      </trans-unit>
+      <trans-unit id="dTy2nEn" resname="allegiance">
+        <source>allegiance</source>
+        <target>allegiance</target>
+      </trans-unit>
+      <trans-unit id="yQRveje" resname="description">
+        <source>description</source>
+        <target>description</target>
+      </trans-unit>
+      <trans-unit id="uqZS48K" resname="date_found">
+        <source>date_found</source>
+        <target>date found</target>
+      </trans-unit>
+      <trans-unit id="vZOMaI9" resname="action">
+        <source>action</source>
+        <target>action</target>
+      </trans-unit>
+      <trans-unit id="Ns8kDsQ" resname="add_planet">
+        <source>add_planet</source>
+        <target>add a planet</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

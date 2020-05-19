@@ -1,58 +1,66 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_connected.html.twig' %}
 
-{% block title %}Hello PlanetteController!{% endblock %}
+{% block title %}{{'hello_page' | trans}}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-
-    <a href="{{ path('planette_distance', {'distance': 10}) }}">Voir les planetes distante de moins de 10 km de la terre</a> <br>
-    <a href="{{ path('planette_distance', {'distance': 100}) }}">Voir les planetes distante de moins de 100 km de la terre</a> <br>
-    <a href="{{ path('planette_distance', {'distance': 10000}) }}">Voir les planetes distante de moins de 10000 km de la terre</a> <br>
-    <h1>Ici je listerais toutes mes planetes</h1>
-
-    <h2>Liste des planettes : </h2>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Terrain</th>
-            <th scope="col">Nb Km Terre</th>
-            <th scope="col">Allegiance</th>
-            <th scope="col">Description</th>
-            <th scope="col">Date Decouverte</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for planet in planettes %}
-        <tr>
-            <th scope="row">{{ planet.id }}</th>
-            <td>{{ planet.nom }}</td>
-            <td>{{ planet.terrain }}</td>
-            <td>{{ planet.nbKmTerre }}</td>
-            <td>{{ planet.allegiance }}</td>
-            <td>{{ planet.description }}</td>
-            <td>{{ planet.deteDecouverte|date('d/m/Y') }}</td>
-            <td>
-                <a href="{{ path('detail_planette', {'planette': planet.id}) }}">Voir le détail</a><br><br>
-                <a href="{{ path('update_planet', {'planette': planet.id}) }}">Editer la planette</a><br><br>
-                <a href="{{ path('delete_planet', {'planette': planet.id}) }}">Supprimer une planète</a><br><br>
-
-
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('add_planette') }}">Ajouter une planète ! </a>
-
+<div class="bg-light vh-100">
+    <div class="container my-2">       
+        <ul class="nav justify-content-center  my-2">
+            <li class="nav-item btn btn-primary mx-2">
+                <a href="{{ path('planette_distance', {'distance': 10}) }}" class="text-white">
+                    - 10 {{'miles_from_earth' | trans}}
+                </a>    
+            </li>
+            <li class="nav-item btn btn-primary mx-2">
+                <a href="{{ path('planette_distance', {'distance': 100}) }}" class="text-white">
+                    -100 {{'miles_from_earth' | trans}}
+                </a>
+            </li>
+            <li class="nav-item btn btn-primary mx-2">
+                <a href="{{ path('planette_distance', {'distance': 10000}) }}" class="text-white">
+                    -10000 {{'miles_from_earth' | trans}}
+                </a>
+            </li>
+        </ul>
+        <h2 class="bg-dark text-white p-2 text-center">{{'planet_list' | trans}}</h2>
+        <table class="table shadow bg-white">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{'name' | trans}}</th>
+                <th scope="col">{{'terrain' | trans}}</th>
+                <th scope="col">{{'ng_km_terre' | trans}}</th>
+                <th scope="col">{{'allegiance' | trans}}</th>
+                <th scope="col">{{'description' | trans}}</th>
+                <th scope="col">{{'date_found' | trans}}</th>
+                <th scope="col">{{'action' | trans}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for planet in planettes %}
+            <tr>
+                <th scope="row">{{ planet.id }}</th>
+                <td>{{ planet.nom }}</td>
+                <td>{{ planet.terrain }}</td>
+                <td>{{ planet.nbKmTerre }}</td>
+                <td>{{ planet.allegiance }}</td>
+                <td>{{ planet.description }}</td>
+                <td>{{ planet.deteDecouverte|date('d/m/Y') }}</td>
+                <td>
+                    <a href="{{ path('detail_planette', {'planette': planet.id}) }}"><i class="fas fa-eye"></i></a><br><br>
+                    <a href="{{ path('update_planet', {'planette': planet.id}) }}"><i class="fas fa-edit"></i></a><br><br>
+                    <a href="{{ path('delete_planet', {'planette': planet.id}) }}"><i class="fas fa-trash"></i></a><br><br>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            <a href="{{ path('add_planette')}}" class=" nav-item btn btn-primary mx-2text-white">
+                {{'add_planet' | trans}}
+            </a>  
+        </div>  
+    </div>
 </div>
 {% endblock %}
-
