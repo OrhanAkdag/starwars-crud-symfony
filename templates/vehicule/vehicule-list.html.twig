@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VehiculeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <h2>Liste des vehicules : </h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">model</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for vehicule in vehicules %}
+        <tr>
+            <th scope="row">{{ vehicule.id }}</th>
+            <td>{{ vehicule.nom }}</td>
+            <td>{{ vehicule.model }}</td>
+            <td>
+                <a href="{{ path('detail-vehicule', {'vehicule': vehicule.id}) }}">Voir le détail</a><br><br>
+                <a href="{{ path('edit-vehicule', {'vehicule': vehicule.id}) }}">Editer le vehicule</a><br><br>
+                <a href="{{ path('delete-vehicule', {'vehicule': vehicule.id}) }}">Supprimer le vehicule</a><br><br>
+
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('add-vehicule') }}">Ajouter un vehicule ! </a>
+
+</div>
+{% endblock %}

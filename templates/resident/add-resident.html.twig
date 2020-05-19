@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un résident'!{% endblock %}
+
+{% block body %}
+
+    <div>
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_row(form.firstname) }} <br>
+        {{ form_row(form.lastname) }}<br>
+        {{ form_row(form.vehicules) }}<br>
+        {{ form_label(form.save) }}
+        {{ form_widget(form.save) }}
+        {{ form_end(form) }}
+
+        <a href="{{ path('resident-list') }}">voir la liste des résidents</a>
+
+        <ul>
+            {% if form.vars.errors.form.getErrors(true)|length > 0 %}
+            {% for error in form.vars.errors.form.getErrors(true) %}
+                <li>{{ error.message }}</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

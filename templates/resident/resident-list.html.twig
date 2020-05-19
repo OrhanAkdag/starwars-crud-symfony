@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello residentController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <h2>Liste des residents : </h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">firstname</th>
+            <th scope="col">lastname</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for resident in residents %}
+        <tr>
+            <th scope="row">{{ resident.id }}</th>
+            <td>{{ resident.firstname }}</td>
+            <td>{{ resident.lastname }}</td>
+            <td>
+                <a href="{{ path('detail-resident', {'resident': resident.id}) }}">Voir le détail</a><br><br>
+                <a href="{{ path('edit-resident', {'resident': resident.id}) }}">Editer le résident</a><br><br>
+                <a href="{{ path('delete-resident', {'resident': resident.id}) }}">Supprimer le resident</a><br><br>
+
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('add-resident') }}">Ajouter un resident ! </a>
+
+</div>
+{% endblock %}
